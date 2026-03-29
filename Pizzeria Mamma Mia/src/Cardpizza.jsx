@@ -2,11 +2,15 @@ const CardPizza = (props) => {
   return (
     <div className="card h-100">
 
-      <img 
-        src={props.imagen} 
-        className="card-img-top" 
-        alt={props.nombre} 
-      />
+      <img
+        src={props.imagen}
+        className="card-img-top"
+        alt={props.nombre}
+        style={{
+          height: "200px",
+          objectFit: "cover"
+  }}
+/>
 
       <div className="card-body d-flex flex-column">
 
