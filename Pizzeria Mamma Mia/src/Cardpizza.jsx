@@ -8,7 +8,7 @@ const CardPizza = (props) => {
         alt={props.nombre}
         style={{
           height: "200px",
-          objectFit: "cover"
+    objectFit: "cover"
   }}
 />
 
