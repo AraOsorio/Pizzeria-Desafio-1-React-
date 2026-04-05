@@ -28,7 +28,7 @@ const Register = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Register</h2>
+      <h2 className="text-dark">Registro</h2>
 
       <form onSubmit={handleSubmit}>
         <input

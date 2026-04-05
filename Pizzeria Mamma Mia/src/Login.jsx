@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Login</h2>
+     <h2 className="text-dark">Login</h2>
 
       <form onSubmit={handleSubmit}>
         <input

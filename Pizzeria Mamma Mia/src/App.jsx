@@ -12,7 +12,7 @@ function App() {
     <>
      <Navbar />
 {/* <Home /> */}
- {/*<Register /> */}
+ {/*<Register />*/}
 <Login />
 <Footer />
     </>
