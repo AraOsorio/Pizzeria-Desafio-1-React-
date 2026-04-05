@@ -9,21 +9,21 @@ const Register = () => {
     e.preventDefault();
 
     if (!email || !password || !confirmPassword) {
-      alert("Todos los campos son obligatorios ❌");
+      alert("Todos los campos son obligatorios");
       return;
     }
 
     if (password.length < 6) {
-      alert("El password debe tener al menos 6 caracteres ❌");
+      alert("El password debe tener al menos 6 caracteres");
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden ❌");
+      alert("Las contraseñas no coinciden");
       return;
     }
 
-    alert("Registro exitoso ✅");
+    alert("Registro exitoso");
   };
 
   return (

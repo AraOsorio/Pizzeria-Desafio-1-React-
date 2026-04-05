@@ -8,16 +8,16 @@ const Login = () => {
     e.preventDefault();
 
     if (!email || !password) {
-      alert("Todos los campos son obligatorios ❌");
+      alert("Todos los campos son obligatorios");
       return;
     }
 
     if (password.length < 6) {
-      alert("El password debe tener al menos 6 caracteres ❌");
+      alert("El password debe tener al menos 6 caracteres");
       return;
     }
 
-    alert("Login exitoso ✅");
+    alert("Login exitoso");
   };
 
   return (
