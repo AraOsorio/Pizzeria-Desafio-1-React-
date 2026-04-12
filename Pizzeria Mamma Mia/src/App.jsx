@@ -3,6 +3,7 @@ import Home from "./Home";
 import Footer from "./Footer";
 import Register from "./Register";
 import Login from "./Login";
+import Cart from "./Cart";
 import './App.css'
 
 
@@ -12,8 +13,9 @@ function App() {
     <>
      <Navbar />
 {/* <Home /> */}
+<Cart/>
  {/*<Register />*/}
-<Login />
+{/*<Login />>*/}
 <Footer />
     </>
   );

@@ -1,6 +1,6 @@
 import Header from "./Header";
 import CardPizza from "./Cardpizza";
-import { pizzas } from "./pizzas";
+import { pizzas } from "./assets/pizzas";
 
 const Home = () => {
   return (
