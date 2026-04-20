@@ -1,24 +1,31 @@
-import Header from "./Header";
+import { useEffect, useState } from "react";
 import CardPizza from "./Cardpizza";
-import { pizzas } from "./assets/pizzas";
 
 const Home = () => {
-  return (
-    <>
-      <Header />
+  const [pizzas, setPizzas] = useState([]);
 
-      <div className="d-flex justify-content-center gap-4 flex-wrap p-4">
+  useEffect(() => {
+    fetch("http://localhost:5000/api/pizzas")
+      .then((res) => res.json())
+      .then((data) => setPizzas(data))
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
+  return (
+    <div className="container mt-4">
+      <div className="row">
         {pizzas.map((pizza) => (
-          <CardPizza
-            key={pizza.id}
-            nombre={pizza.nombre}
-            precio={pizza.precio}
-            ingredientes={pizza.ingredientes}
-            imagen={pizza.imagen}
-          />
+          <div className="col-md-4 mb-4" key={pizza.id}>
+            <CardPizza
+              nombre={pizza.name}
+              precio={pizza.price}
+              ingredientes={pizza.ingredients}
+              imagen={pizza.img}
+            />
+          </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
