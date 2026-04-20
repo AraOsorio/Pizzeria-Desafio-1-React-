@@ -17,11 +17,11 @@ const Pizza = () => {
 
       <h2>{pizza.name}</h2>
 
-      <img
-        src={pizza.img}
-        alt={pizza.name}
-        style={{ width: "100%", maxWidth: "400px" }}
-      />
+<img
+  src="https://easyways.cl/storage/20210208143331pizza-napolitana.jpg"
+  alt="pizza"
+  style={{ width: "100%", maxWidth: "400px" }}
+/>
 
       <p className="mt-3">{pizza.desc}</p>
 
