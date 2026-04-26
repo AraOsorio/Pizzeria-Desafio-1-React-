@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className="container mt-4 text-center">
-      <h1>¡Uuuuuups! Lo sentimos mucho, esta página no ha sido encontrada</h1>
-      <p>Página no encontrada</p>
+    <div className="container text-center mt-5 text-dark">
+      <h1 className="display-4">Lo sentimos! Ésta página no existe</h1>
+      
 
-      <Link to="/" className="btn btn-dark">
-        Volver al inicio
+      <Link to="/" className="btn btn-dark mt-3">
+        Volver al inicio 🍕
       </Link>
     </div>
   );
