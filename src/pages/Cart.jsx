@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
+  const { token } = useContext(UserContext);
   const [carrito, setCarrito] = useState([
     {
       id: 1,
@@ -18,7 +20,7 @@ const Cart = () => {
     }
   ]);
 
-  const aumentar = (id) => {
+ const aumentar = (id) => {
     const nuevo = carrito.map((item) =>
       item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
     );
@@ -58,9 +60,17 @@ const Cart = () => {
         </div>
       ))}
 
-      <h4>Total: ${total.toLocaleString()}</h4>
+      <h4>Total: ${total.toLocaleString("es-CL")}</h4>
 
-      <button className="btn btn-dark">Pagar</button>
+      <button className="btn btn-dark" disabled={!token}>
+        Pagar
+      </button>
+
+      {!token && (
+        <p className="text-danger mt-2">
+          Debes iniciar sesión para pagar
+        </p>
+      )}
     </div>
   );
 };

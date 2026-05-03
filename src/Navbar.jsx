@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext.jsx";
+
 const Navbar = () => {
   const total = 25000;
-  const token = true;
+  const { token, logout } = useContext(UserContext);
 
   return (
     <nav className="navbar navbar-dark bg-dark px-3">
 
-      {/* Título */}
       <span className="navbar-brand">Pizzería Mamma Mia!</span>
 
-      {/* Botones */}
       <div className="d-flex gap-2">
 
         <Link to="/" className="btn btn-outline-light btn-sm">
@@ -22,7 +23,10 @@ const Navbar = () => {
               🔓 Profile
             </Link>
 
-            <button className="btn btn-outline-light btn-sm">
+            <button 
+              className="btn btn-outline-light btn-sm"
+              onClick={logout}
+            >
               🔒 Logout
             </button>
           </>

@@ -1,43 +1,25 @@
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Pizza = () => {
+  const { id } = useParams();
   const [pizza, setPizza] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/pizzas/p001")
+    fetch(`http://localhost:3000/api/pizzas/${id}`)
       .then((res) => res.json())
       .then((data) => setPizza(data))
-      .catch((error) => console.error(error));
-  }, []);
+      .catch((error) => console.log(error));
+  }, [id]);
 
   if (!pizza) return <p>Cargando...</p>;
 
   return (
     <div className="container mt-4">
-
       <h2>{pizza.name}</h2>
-
-<img
-  src="https://easyways.cl/storage/20210208143331pizza-napolitana.jpg"
-  alt="pizza"
-  style={{ width: "100%", maxWidth: "400px" }}
-/>
-
-      <p className="mt-3">{pizza.desc}</p>
-
-      <h5>Ingredientes:</h5>
-      <ul>
-        {pizza.ingredients.map((ing, index) => (
-          <li key={index}>🍕 {ing}</li>
-        ))}
-      </ul>
-
-      <h4>Precio: ${pizza.price.toLocaleString("es-CL")}</h4>
-
-      <button className="btn btn-dark mt-2">
-        Añadir 🛒
-      </button>
-
+      <img src={pizza.img} alt={pizza.name} width="300" />
+      <p>{pizza.desc}</p>
+      <p><strong>Precio:</strong> ${pizza.price}</p>
     </div>
   );
 };

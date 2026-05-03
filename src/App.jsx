@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+
+import { UserContext } from "./context/UserContext";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -12,19 +15,38 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 function App() {
+  const { token } = useContext(UserContext);
+
   return (
     <BrowserRouter>
       <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/pizza/p001" element={<Pizza />} />
 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/404" element={<NotFound />} />
+        {/* 🔒 Si está logueado NO puede ver login */}
+        <Route
+          path="/login"
+          element={token ? <Navigate to="/" /> : <Login />}
+        />
+
+        {/* 🔒 Si está logueado NO puede ver register */}
+        <Route
+          path="/register"
+          element={token ? <Navigate to="/" /> : <Register />}
+        />
+
+        <Route path="/cart" element={<Cart />} />
+
+        {/* 🍕 IMPORTANTE: dinámica */}
+        <Route path="/pizza/:id" element={<Pizza />} />
+
+        {/* 🔒 Ruta protegida */}
+        <Route
+          path="/profile"
+          element={token ? <Profile /> : <Navigate to="/login" />}
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
 
