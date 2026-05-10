@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { login } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,12 +23,16 @@ const Login = () => {
       return;
     }
 
+    login();
+
     alert("Login exitoso");
+
+    navigate("/");
   };
 
   return (
     <div className="container mt-5">
-     <h2 className="text-dark">Login</h2>
+      <h2 className="text-dark">Login</h2>
 
       <form onSubmit={handleSubmit}>
         <input

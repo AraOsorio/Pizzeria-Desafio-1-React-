@@ -9,8 +9,12 @@ const UserProvider = ({ children }) => {
     setToken(false);
   };
 
+  const login = () => {
+  setToken(true);
+  };
+
   return (
-    <UserContext.Provider value={{ token, logout }}>
+    <UserContext.Provider value={{ token, logout, login }}>
       {children}
     </UserContext.Provider>
   );
