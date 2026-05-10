@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CardPizza = (props) => {
   return (
     <div className="card h-100">
@@ -8,15 +10,19 @@ const CardPizza = (props) => {
         alt={props.nombre}
         style={{
           height: "200px",
-    objectFit: "cover"
-  }}
-/>
+          objectFit: "cover"
+        }}
+      />
 
       <div className="card-body d-flex flex-column">
 
-        <h5 className="card-title">Pizza {props.nombre}</h5>
+        <h5 className="card-title">
+          Pizza {props.nombre}
+        </h5>
 
-        <p className="text-muted">Ingredientes:</p>
+        <p className="text-muted">
+          Ingredientes:
+        </p>
 
         <ul>
           {props.ingredientes.map((ing, index) => (
@@ -29,13 +35,17 @@ const CardPizza = (props) => {
         </h6>
 
         <div className="mt-auto d-flex justify-content-between">
-          <button className="btn btn-outline-dark btn-sm">
-            Ver más 👀
-          </button>
+
+          <Link to={`/pizza/${props.id}`}>
+            <button className="btn btn-outline-dark btn-sm">
+              Ver más 👀
+            </button>
+          </Link>
 
           <button className="btn btn-dark btn-sm">
             Añadir 🛒
           </button>
+
         </div>
 
       </div>
@@ -43,4 +53,4 @@ const CardPizza = (props) => {
   );
 };
 
-export default CardPizza
+export default CardPizza;
